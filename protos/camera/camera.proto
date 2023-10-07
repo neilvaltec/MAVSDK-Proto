@@ -111,114 +111,149 @@ service CameraService {
     rpc SelectCamera(SelectCameraRequest) returns(SelectCameraResponse) { option (mavsdk.options.async_type) = SYNC; }
 }
 
-message PrepareRequest {}
+message PrepareRequest {
+    int32 drone_id = 1;
+}
 message PrepareResponse {
     CameraResult camera_result = 1;
 }
 
-message TakePhotoRequest {}
+message TakePhotoRequest {
+    int32 drone_id = 1;
+}
 message TakePhotoResponse {
     CameraResult camera_result = 1;
 }
 
 message StartPhotoIntervalRequest {
-    float interval_s = 1; // Interval between photos (in seconds)
+    int32 drone_id = 1;
+    float interval_s = 2; // Interval between photos (in seconds)
 }
 message StartPhotoIntervalResponse {
     CameraResult camera_result = 1;
 }
 
-message StopPhotoIntervalRequest {}
+message StopPhotoIntervalRequest {
+    int32 drone_id = 1;
+}
 message StopPhotoIntervalResponse {
     CameraResult camera_result = 1;
 }
 
-message StartVideoRequest {}
+message StartVideoRequest {
+    int32 drone_id = 1;
+}
 message StartVideoResponse {
     CameraResult camera_result = 1;
 }
 
-message StopVideoRequest {}
+message StopVideoRequest {
+    int32 drone_id = 1;
+}
 message StopVideoResponse {
     CameraResult camera_result = 1;
 }
 
-message StartVideoStreamingRequest {}
+message StartVideoStreamingRequest {
+    int32 drone_id = 1;
+}
 message StartVideoStreamingResponse {
     CameraResult camera_result = 1;
 }
 
-message StopVideoStreamingRequest {}
+message StopVideoStreamingRequest {
+    int32 drone_id = 1;
+}
 message StopVideoStreamingResponse {
     CameraResult camera_result = 1;
 }
 
 message SetModeRequest {
-    Mode mode = 1; // Camera mode to set
+    int32 drone_id = 1;
+    Mode mode = 2; // Camera mode to set
 }
 message SetModeResponse {
     CameraResult camera_result = 1;
 }
 
 message ListPhotosRequest {
-    PhotosRange photos_range = 1; // Which photos should be listed (all or since connection)
+    int32 drone_id = 1;
+    PhotosRange photos_range = 2; // Which photos should be listed (all or since connection)
 }
 message ListPhotosResponse {
     CameraResult camera_result = 1;
     repeated CaptureInfo capture_infos = 2; // List of capture infos (representing the photos)
 }
 
-message SubscribeInformationRequest {}
+message SubscribeInformationRequest {
+    int32 drone_id = 1;
+}
 message InformationResponse {
     Information information = 1; // Camera information
 }
 
-message SubscribeModeRequest {}
+message SubscribeModeRequest {
+    int32 drone_id = 1;
+}
 message ModeResponse {
     Mode mode = 1; // Camera mode
 }
 
-message SubscribeVideoStreamInfoRequest {}
+message SubscribeVideoStreamInfoRequest {
+    int32 drone_id = 1;
+}
 message VideoStreamInfoResponse {
     VideoStreamInfo video_stream_info = 1; // Video stream info
 }
 
-message SubscribeCaptureInfoRequest {}
+message SubscribeCaptureInfoRequest {
+    int32 drone_id = 1;
+}
 message CaptureInfoResponse {
     CaptureInfo capture_info = 1; // Capture info
 }
 
-message SubscribeStatusRequest {}
+message SubscribeStatusRequest {
+    int32 drone_id = 1;
+}
 message StatusResponse {
     Status camera_status = 1; // Camera status
 }
 
-message SubscribeCurrentSettingsRequest {}
+message SubscribeCurrentSettingsRequest {
+    int32 drone_id = 1;
+}
 message CurrentSettingsResponse {
     repeated Setting current_settings = 1; // List of current settings
 }
 
-message SubscribePossibleSettingOptionsRequest {}
+message SubscribePossibleSettingOptionsRequest {
+    int32 drone_id = 1;
+}
 message PossibleSettingOptionsResponse {
     repeated SettingOptions setting_options = 1; // List of settings that can be changed
 }
 
 message SetSettingRequest {
-    Setting setting = 1; // Desired setting
+    int32 drone_id = 1;
+    Setting setting = 2; // Desired setting
 }
 message SetSettingResponse {
     CameraResult camera_result = 1;
 }
 
 message GetSettingRequest {
-    Setting setting = 1; // Requested setting
+    int32 drone_id = 1;
+    Setting setting = 2; // Requested setting
 }
 message GetSettingResponse {
     CameraResult camera_result = 1;
     Setting setting = 2; // Setting
 }
 
-message FormatStorageRequest {}
+message FormatStorageRequest {
+    int32 drone_id = 1;
+}
 message FormatStorageResponse {
     CameraResult camera_result = 1;
 }
@@ -228,7 +263,8 @@ message SelectCameraResponse {
 }
 
 message SelectCameraRequest {
-    int32 camera_id = 1; // Id of camera to be selected
+    int32 drone_id = 1;
+    int32 camera_id = 2; // Id of camera to be selected
 }
 
 // Result type.

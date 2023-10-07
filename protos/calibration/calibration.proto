@@ -38,37 +38,49 @@ service CalibrationService {
     rpc Cancel(CancelRequest) returns(CancelResponse) { option (mavsdk.options.async_type) = SYNC; }
 }
 
-message SubscribeCalibrateGyroRequest {}
+message SubscribeCalibrateGyroRequest {
+    int32 drone_id = 1;
+}
 message CalibrateGyroResponse {
     CalibrationResult calibration_result = 1;
     ProgressData progress_data = 2; // Progress data
 }
 
-message SubscribeCalibrateAccelerometerRequest {}
+message SubscribeCalibrateAccelerometerRequest {
+    int32 drone_id = 1;
+}
 message CalibrateAccelerometerResponse {
     CalibrationResult calibration_result = 1;
     ProgressData progress_data = 2; // Progress data
 }
 
-message SubscribeCalibrateMagnetometerRequest {}
+message SubscribeCalibrateMagnetometerRequest {
+    int32 drone_id = 1;
+}
 message CalibrateMagnetometerResponse {
     CalibrationResult calibration_result = 1;
     ProgressData progress_data = 2; // Progress data
 }
 
-message SubscribeCalibrateLevelHorizonRequest {}
+message SubscribeCalibrateLevelHorizonRequest {
+    int32 drone_id = 1;
+}
 message CalibrateLevelHorizonResponse {
     CalibrationResult calibration_result = 1;
     ProgressData progress_data = 2; // Progress data
 }
 
-message SubscribeCalibrateGimbalAccelerometerRequest {}
+message SubscribeCalibrateGimbalAccelerometerRequest {
+    int32 drone_id = 1;
+}
 message CalibrateGimbalAccelerometerResponse {
     CalibrationResult calibration_result = 1;
     ProgressData progress_data = 2; // Progress data
 }
 
-message CancelRequest {}
+message CancelRequest {
+    int32 drone_id = 1;
+}
 message CancelResponse {
     CalibrationResult calibration_result = 1;
 }

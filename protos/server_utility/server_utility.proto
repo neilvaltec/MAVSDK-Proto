@@ -28,8 +28,9 @@ enum StatusTextType {
 }
 
 message SendStatusTextRequest {
-    StatusTextType type = 1; // The text to send
-    string text = 2; // Text message
+    int32 drone_id = 1;
+    StatusTextType type = 2; // The text to send
+    string text = 3; // Text message
 }
 message SendStatusTextResponse {
     ServerUtilityResult server_utility_result = 1;

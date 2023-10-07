@@ -52,7 +52,8 @@ service ParamServerService {
 }
 
 message RetrieveParamIntRequest {
-    string name = 1; // Name of the parameter
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter
 }
 
 message RetrieveParamIntResponse {
@@ -61,15 +62,17 @@ message RetrieveParamIntResponse {
 }
 
 message ProvideParamIntRequest {
-    string name = 1; // Name of the parameter to provide
-    int32 value = 2; // Value the parameter should be set to
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter to provide
+    int32 value = 3; // Value the parameter should be set to
 }
 message ProvideParamIntResponse {
     ParamServerResult param_server_result = 1;
 }
 
 message RetrieveParamFloatRequest {
-    string name = 1; // Name of the parameter
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter
 }
 message RetrieveParamFloatResponse {
     ParamServerResult param_server_result = 1;
@@ -77,15 +80,17 @@ message RetrieveParamFloatResponse {
 }
 
 message ProvideParamFloatRequest {
-    string name = 1; // Name of the parameter to provide
-    float value = 2; // Value the parameter should be set to
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter to provide
+    float value = 3; // Value the parameter should be set to
 }
 message ProvideParamFloatResponse {
     ParamServerResult param_server_result = 1;
 }
 
 message RetrieveParamCustomRequest {
-    string name = 1; // Name of the parameter
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter
 }
 
 message RetrieveParamCustomResponse {
@@ -94,15 +99,18 @@ message RetrieveParamCustomResponse {
 }
 
 message ProvideParamCustomRequest {
-    string name = 1; // Name of the parameter to provide
-    string value = 2; // Value the parameter should be set to
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter to provide
+    string value = 3; // Value the parameter should be set to
 }
 message ProvideParamCustomResponse {
     ParamServerResult param_server_result = 1;
 }
 
 
-message RetrieveAllParamsRequest {}
+message RetrieveAllParamsRequest {
+    int32 drone_id = 1;
+}
 
 message RetrieveAllParamsResponse {
     AllParams params = 1; // Collection of all parameters

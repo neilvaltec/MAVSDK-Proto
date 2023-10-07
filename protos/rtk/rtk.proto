@@ -19,7 +19,8 @@ message RtcmData {
 }
 
 message SendRtcmDataRequest {
-    RtcmData rtcm_data = 1; // The data
+  int32 drone_id = 1;
+    RtcmData rtcm_data = 2; // The data
 }
 
 message SendRtcmDataResponse {

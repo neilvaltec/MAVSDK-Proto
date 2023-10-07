@@ -27,15 +27,18 @@ service LogFilesService {
     }
 }
 
-message GetEntriesRequest {}
+message GetEntriesRequest {
+    int32 drone_id = 1;
+}
 message GetEntriesResponse {
     LogFilesResult log_files_result = 1;
     repeated Entry entries = 2; // List of entries
 }
 
 message SubscribeDownloadLogFileRequest {
-    Entry entry = 1; // Entry of the log file to download.
-    string path = 2; // Path of where to download log file to.
+    int32 drone_id = 1;
+    Entry entry = 2; // Entry of the log file to download.
+    string path = 3; // Path of where to download log file to.
 }
 message DownloadLogFileResponse {
     LogFilesResult log_files_result = 1;
@@ -43,11 +46,14 @@ message DownloadLogFileResponse {
 }
 
 message DownloadLogFileRequest {
-    Entry entry = 1; // Entry of the log file to download.
-    string path = 2; // Path of where to download log file to.
+    int32 drone_id = 1;
+    Entry entry = 2; // Entry of the log file to download.
+    string path = 3; // Path of where to download log file to.
 }
 
-message EraseAllLogFilesRequest {}
+message EraseAllLogFilesRequest {
+    int32 drone_id = 1;
+}
 message EraseAllLogFilesResponse {
     LogFilesResult log_files_result = 1;
 }

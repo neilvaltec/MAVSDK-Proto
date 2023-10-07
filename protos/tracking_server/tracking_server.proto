@@ -30,49 +30,62 @@ service TrackingServerService {
 }
 
 message SetTrackingPointStatusRequest {
-    TrackPoint tracked_point = 1; // The tracked point
+    int32 drone_id = 1;
+    TrackPoint tracked_point = 2; // The tracked point
 }
 message SetTrackingPointStatusResponse {}
 
 message SetTrackingRectangleStatusRequest {
-    TrackRectangle tracked_rectangle = 1; // The tracked rectangle
+    int32 drone_id = 1;
+    TrackRectangle tracked_rectangle = 2; // The tracked rectangle
 }
 message SetTrackingRectangleStatusResponse {}
 
-message SetTrackingOffStatusRequest {}
+message SetTrackingOffStatusRequest {
+    int32 drone_id = 1;
+}
 message SetTrackingOffStatusResponse {}
 
-message SubscribeTrackingPointCommandRequest {}
+message SubscribeTrackingPointCommandRequest {
+    int32 drone_id = 1;
+}
 message TrackingPointCommandResponse {
     TrackPoint track_point = 1; // The point to track if a point is to be tracked
 }
 
-message SubscribeTrackingRectangleCommandRequest {}
+message SubscribeTrackingRectangleCommandRequest {
+    int32 drone_id = 1;
+}
 message TrackingRectangleCommandResponse {
     TrackRectangle track_rectangle = 1; // The point to track if a point is to be tracked
 }
 
-message SubscribeTrackingOffCommandRequest {}
+message SubscribeTrackingOffCommandRequest {
+    int32 drone_id = 1;
+}
 message TrackingOffCommandResponse {
     int32 dummy = 1; // Unused
 }
 
 message RespondTrackingPointCommandRequest {
-    CommandAnswer command_answer = 1; // The ack to answer to the incoming command
+    int32 drone_id = 1;
+    CommandAnswer command_answer = 2; // The ack to answer to the incoming command
 }
 message RespondTrackingPointCommandResponse {
     TrackingServerResult tracking_server_result = 1; // The result of sending the response.
 }
 
 message RespondTrackingRectangleCommandRequest {
-    CommandAnswer command_answer = 1; // The ack to answer to the incoming command
+    int32 drone_id = 1;
+    CommandAnswer command_answer = 2; // The ack to answer to the incoming command
 }
 message RespondTrackingRectangleCommandResponse {
     TrackingServerResult tracking_server_result = 1; // The result of sending the response.
 }
 
 message RespondTrackingOffCommandRequest {
-    CommandAnswer command_answer = 1; // The ack to answer to the incoming command
+    int32 drone_id = 1;
+    CommandAnswer command_answer = 2; // The ack to answer to the incoming command
 }
 message RespondTrackingOffCommandResponse {
     TrackingServerResult tracking_server_result = 1; // The result of sending the response.

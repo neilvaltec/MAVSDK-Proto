@@ -151,56 +151,75 @@ service ActionService {
      rpc SetCurrentSpeed(SetCurrentSpeedRequest) returns(SetCurrentSpeedResponse) {}
 }
 
-message ArmRequest {}
+message ArmRequest {
+    int32 drone_id = 1;
+}
 message ArmResponse {
     ActionResult action_result = 1;
 }
 
-message DisarmRequest {}
+message DisarmRequest {
+    int32 drone_id = 1;
+}
 message DisarmResponse {
     ActionResult action_result = 1;
 }
 
-message TakeoffRequest {}
+message TakeoffRequest {
+    int32 drone_id = 1;
+}
 message TakeoffResponse {
     ActionResult action_result = 1;
 }
 
-message LandRequest {}
+message LandRequest {
+    int32 drone_id = 1;
+}
 message LandResponse {
     ActionResult action_result = 1;
 }
 
-message RebootRequest {}
+message RebootRequest {
+    int32 drone_id = 1;
+}
 message RebootResponse {
     ActionResult action_result = 1;
 }
 
-message ShutdownRequest {}
+message ShutdownRequest {
+    int32 drone_id = 1;
+}
 message ShutdownResponse {
     ActionResult action_result = 1;
 }
 
-message TerminateRequest {}
+message TerminateRequest {
+    int32 drone_id = 1;
+}
 message TerminateResponse {
     ActionResult action_result = 1;
 }
 
-message KillRequest {}
+message KillRequest {
+    int32 drone_id = 1;
+}
 message KillResponse {
     ActionResult action_result = 1;
 }
 
-message ReturnToLaunchRequest {}
+message ReturnToLaunchRequest {
+    int32 drone_id = 1;
+}
 message ReturnToLaunchResponse {
     ActionResult action_result = 1;
 }
 
 message GotoLocationRequest {
-    double latitude_deg = 1; // Latitude (in degrees)
-    double longitude_deg = 2; // Longitude (in degrees)
-    float absolute_altitude_m = 3; // Altitude AMSL (in meters)
-    float yaw_deg = 4; // Yaw angle (in degrees, frame is NED, 0 is North, positive is clockwise)
+    int32 drone_id = 1;
+    double latitude_deg = 2; // Latitude (in degrees)
+    double longitude_deg = 3; // Longitude (in degrees)
+    float absolute_altitude_m = 4; // Altitude AMSL (in meters)
+    float yaw_deg = 5; // Yaw angle (in degrees, frame is NED, 0 is North, positive is clockwise)
 }
 message GotoLocationResponse {
     ActionResult action_result = 1;
@@ -215,10 +234,12 @@ enum OrbitYawBehavior {
     ORBIT_YAW_BEHAVIOR_RC_CONTROLLED = 4; // Yaw controlled by RC input
 }
 
-message DoOrbitRequest {
-    float radius_m = 1; // Radius of circle (in meters)
-    float velocity_ms = 2; // Tangential velocity (in m/s)
-    OrbitYawBehavior yaw_behavior = 3; // Yaw behavior of vehicle (ORBIT_YAW_BEHAVIOUR)
+// ##
+message DoOrbitRequest { 
+    int32 drone_id = 1;
+    float radius_m = 2; // Radius of circle (in meters)
+    float velocity_ms = 3; // Tangential velocity (in m/s)
+    OrbitYawBehavior yaw_behavior = 4; // Yaw behavior of vehicle (ORBIT_YAW_BEHAVIOUR)
     double latitude_deg = 5 [(mavsdk.options.default_value)="NaN"]; // Center point latitude in degrees. NAN: use current latitude for center
     double longitude_deg = 6 [(mavsdk.options.default_value)="NaN"]; // Center point longitude in degrees. NAN: use current longitude for center
     double absolute_altitude_m = 7 [(mavsdk.options.default_value)="NaN"]; // Center point altitude in meters. NAN: use current altitude for center
@@ -227,70 +248,87 @@ message DoOrbitResponse {
     ActionResult action_result = 1;
 }
 
-message HoldRequest {}
+message HoldRequest {
+    int32 drone_id = 1;
+}
 message HoldResponse {
     ActionResult action_result = 1;
 }
 
 message SetActuatorRequest {
-    int32 index = 1; // Index of actuator (starting with 1)
-    float value = 2; // Value to set the actuator to (normalized from [-1..1])
+    int32 drone_id = 1;
+    int32 index = 2; // Index of actuator (starting with 1)
+    float value = 3; // Value to set the actuator to (normalized from [-1..1])
 }
 message SetActuatorResponse {
     ActionResult action_result = 1;
 }
 
-message TransitionToFixedwingRequest {}
+message TransitionToFixedwingRequest {
+    int32 drone_id = 1;
+}
 message TransitionToFixedwingResponse {
     ActionResult action_result = 1;
 }
 
-message TransitionToMulticopterRequest {}
+message TransitionToMulticopterRequest {
+    int32 drone_id = 1;
+}
 message TransitionToMulticopterResponse {
     ActionResult action_result = 1;
 }
 
-message GetTakeoffAltitudeRequest {}
+message GetTakeoffAltitudeRequest {
+    int32 drone_id = 1;
+}
 message GetTakeoffAltitudeResponse {
     ActionResult action_result = 1;
     float altitude = 2; // Takeoff altitude relative to ground/takeoff location (in meters)
 }
 
 message SetTakeoffAltitudeRequest {
-    float altitude = 1; // Takeoff altitude relative to ground/takeoff location (in meters)
+    int32 drone_id = 1;
+    float altitude = 2; // Takeoff altitude relative to ground/takeoff location (in meters)
 }
 message SetTakeoffAltitudeResponse {
     ActionResult action_result = 1;
 }
 
-message GetMaximumSpeedRequest {}
+message GetMaximumSpeedRequest {
+    int32 drone_id = 1;
+}
 message GetMaximumSpeedResponse {
     ActionResult action_result = 1;
     float speed = 2; // Maximum speed (in metres/second)
 }
 
 message SetMaximumSpeedRequest {
-    float speed = 1; // Maximum speed (in metres/second)
+    int32 drone_id = 1;
+    float speed = 2; // Maximum speed (in metres/second)
 }
 message SetMaximumSpeedResponse {
     ActionResult action_result = 1;
 }
 
-message GetReturnToLaunchAltitudeRequest {}
+message GetReturnToLaunchAltitudeRequest {
+    int32 drone_id = 1;
+}
 message GetReturnToLaunchAltitudeResponse {
     ActionResult action_result = 1;
     float relative_altitude_m = 2; // Return altitude relative to takeoff location (in meters)
 }
 
 message SetReturnToLaunchAltitudeRequest {
-    float relative_altitude_m = 1; // Return altitude relative to takeoff location (in meters)
+    int32 drone_id = 1;
+    float relative_altitude_m = 2; // Return altitude relative to takeoff location (in meters)
 }
 message SetReturnToLaunchAltitudeResponse {
     ActionResult action_result = 1;
 }
 
 message SetCurrentSpeedRequest {
-    float speed_m_s = 1; // Speed in meters/second
+    int32 drone_id = 1;
+    float speed_m_s = 2; // Speed in meters/second
 }
 message SetCurrentSpeedResponse {
     ActionResult action_result = 1;

@@ -39,14 +39,17 @@ message Polygon {
 }
 
 message UploadGeofenceRequest {
-    repeated Polygon polygons = 1; // Polygon(s) representing the geofence(s)
+    int32 drone_id = 1;
+    repeated Polygon polygons = 2; // Polygon(s) representing the geofence(s)
 }
 
 message UploadGeofenceResponse {
     GeofenceResult geofence_result = 1;
 }
 
-message ClearGeofenceRequest {}
+message ClearGeofenceRequest {
+    int32 drone_id = 2;
+}
 message ClearGeofenceResponse {
     GeofenceResult geofence_result = 1;
 }

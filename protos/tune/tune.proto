@@ -37,7 +37,8 @@ enum SongElement {
 }
 
 message PlayTuneRequest {
-  TuneDescription tune_description = 1; // The tune to be played
+  int32 drone_id = 1;
+  TuneDescription tune_description = 2; // The tune to be played
 }
 message PlayTuneResponse {
   TuneResult tune_result = 1;

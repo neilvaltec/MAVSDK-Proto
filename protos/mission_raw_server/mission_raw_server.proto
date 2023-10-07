@@ -31,23 +31,31 @@ service MissionRawServerService {
     rpc SubscribeClearAll(SubscribeClearAllRequest) returns(stream ClearAllResponse) {}
 }
 
-message SubscribeIncomingMissionRequest {}
+message SubscribeIncomingMissionRequest {
+    int32 drone_id = 1;
+}
 message IncomingMissionResponse {
     MissionRawServerResult mission_raw_server_result = 1;
     MissionPlan mission_plan = 2; // The mission plan
 }
 
-message SubscribeCurrentItemChangedRequest {}
+message SubscribeCurrentItemChangedRequest {
+    int32 drone_id = 1;
+}
 message CurrentItemChangedResponse {
     MissionItem mission_item = 1;
 }
 
-message SubscribeClearAllRequest {}
+message SubscribeClearAllRequest {
+    int32 drone_id = 1;
+}
 message ClearAllResponse {
     uint32 clear_type = 1;
 }
 
-message SetCurrentItemCompleteRequest {}
+message SetCurrentItemCompleteRequest {
+    int32 drone_id = 1;
+}
 message SetCurrentItemCompleteResponse {}
 
 // Mission item exactly identical to MAVLink MISSION_ITEM_INT.

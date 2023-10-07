@@ -24,13 +24,16 @@ service ShellService {
 }
 
 message SendRequest {
-    string command = 1; // The command line to send
+    int32 drone_id = 1;
+    string command = 2; // The command line to send
 }
 message SendResponse {
     ShellResult shell_result = 1;
 }
 
-message SubscribeReceiveRequest {}
+message SubscribeReceiveRequest {
+    int32 drone_id = 1;
+}
 message ReceiveResponse {
     string data = 1; // Received data.
 }

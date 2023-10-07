@@ -22,13 +22,16 @@ service CoreService {
     rpc SetMavlinkTimeout(SetMavlinkTimeoutRequest) returns(SetMavlinkTimeoutResponse) {}
 }
 
-message SubscribeConnectionStateRequest {}
+message SubscribeConnectionStateRequest {
+    int32 drone_id = 1;
+}
 message ConnectionStateResponse {
     ConnectionState connection_state = 1; // Connection state
 }
 
 message SetMavlinkTimeoutRequest {
-    double timeout_s = 1; // Timeout in seconds
+    int32 drone_id = 1;
+    double timeout_s = 2; // Timeout in seconds
 }
 message SetMavlinkTimeoutResponse {}
 

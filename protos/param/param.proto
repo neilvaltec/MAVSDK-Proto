@@ -52,7 +52,8 @@ service ParamService {
 }
 
 message GetParamIntRequest {
-    string name = 1; // Name of the parameter
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter
 }
 
 message GetParamIntResponse {
@@ -61,15 +62,17 @@ message GetParamIntResponse {
 }
 
 message SetParamIntRequest {
-    string name = 1; // Name of the parameter to set
-    int32 value = 2; // Value the parameter should be set to
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter to set
+    int32 value = 3; // Value the parameter should be set to
 }
 message SetParamIntResponse {
     ParamResult param_result = 1;
 }
 
 message GetParamFloatRequest {
-    string name = 1; // Name of the parameter
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter
 }
 message GetParamFloatResponse {
     ParamResult param_result = 1;
@@ -77,15 +80,17 @@ message GetParamFloatResponse {
 }
 
 message SetParamFloatRequest {
-    string name = 1; // Name of the parameter to set
-    float value = 2; // Value the parameter should be set to
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter to set
+    float value = 3; // Value the parameter should be set to
 }
 message SetParamFloatResponse {
     ParamResult param_result = 1;
 }
 
 message GetParamCustomRequest {
-    string name = 1; // Name of the parameter
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter
 }
 message GetParamCustomResponse {
     ParamResult param_result = 1;
@@ -93,14 +98,17 @@ message GetParamCustomResponse {
 }
 
 message SetParamCustomRequest {
-    string name = 1; // Name of the parameter to set
-    string value = 2; // Value the parameter should be set to
+    int32 drone_id = 1;
+    string name = 2; // Name of the parameter to set
+    string value = 3; // Value the parameter should be set to
 }
 message SetParamCustomResponse {
     ParamResult param_result = 1;
 }
 
-message GetAllParamsRequest {}
+message GetAllParamsRequest {
+    int32 drone_id = 1;
+}
 
 message GetAllParamsResponse {
     AllParams params = 1; // Collection of all parameters

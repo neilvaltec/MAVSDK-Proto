@@ -33,21 +33,26 @@ service ManualControlService
     rpc SetManualControlInput(SetManualControlInputRequest) returns(SetManualControlInputResponse) { option (mavsdk.options.async_type) = SYNC; }
 }
 
-message StartPositionControlRequest {}
+message StartPositionControlRequest {
+    int32 drone_id = 1;
+}
 message StartPositionControlResponse {
     ManualControlResult manual_control_result = 1;
 }
 
-message StartAltitudeControlRequest {}
+message StartAltitudeControlRequest {
+    int32 drone_id = 1;
+}
 message StartAltitudeControlResponse {
     ManualControlResult manual_control_result = 1;
 }
 
 message SetManualControlInputRequest {
-    float x = 1; // value between -1. to 1. negative -> backwards, positive -> forwards
-    float y = 2; // value between -1. to 1. negative -> left, positive -> right
-    float z = 3; // value between -1. to 1. negative -> down, positive -> up (usually for now, for multicopter 0 to 1 is expected)
-    float r = 4; // value between -1. to 1. negative -> turn anti-clockwise (towards the left), positive -> turn clockwise (towards the right)
+    int32 drone_id = 1;
+    float x = 2; // value between -1. to 1. negative -> backwards, positive -> forwards
+    float y = 3; // value between -1. to 1. negative -> left, positive -> right
+    float z = 4; // value between -1. to 1. negative -> down, positive -> up (usually for now, for multicopter 0 to 1 is expected)
+    float r = 5; // value between -1. to 1. negative -> turn anti-clockwise (towards the left), positive -> turn clockwise (towards the right)
 }
 message SetManualControlInputResponse {
     ManualControlResult  manual_control_result = 1;

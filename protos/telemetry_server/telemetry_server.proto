@@ -43,80 +43,97 @@ service TelemetryServerService {
 }
 
 message PublishPositionRequest {
-    Position position = 1; // The next position
-    VelocityNed velocity_ned = 2; // The next velocity (NED)
-    Heading heading = 3; // Heading (yaw) in degrees
+    int32 drone_id = 1;
+    Position position = 2; // The next position
+    VelocityNed velocity_ned = 3; // The next velocity (NED)
+    Heading heading = 4; // Heading (yaw) in degrees
 }
 
 message PublishHomeRequest {
-    Position home = 1; // The next home position
+    int32 drone_id = 1;
+    Position home = 2; // The next home position
 }
 
 message PublishSysStatusRequest {
-    Battery battery = 1; // The next 'battery' state
-    bool rc_receiver_status = 2; // rc receiver status
-    bool gyro_status = 3;
-    bool accel_status = 4;
-    bool mag_status = 5;
-    bool gps_status = 6;
+    int32 drone_id = 1;
+    Battery battery = 2; // The next 'battery' state
+    bool rc_receiver_status = 3; // rc receiver status
+    bool gyro_status = 4;
+    bool accel_status = 5;
+    bool mag_status = 6;
+    bool gps_status = 7;
 }
 
 message PublishExtendedSysStateRequest {
-    VtolState vtol_state = 1;
-    LandedState landed_state = 2;
+    int32 drone_id = 1;
+    VtolState vtol_state = 2;
+    LandedState landed_state = 3;
 }
 
 message PublishInAirRequest {
-    bool is_in_air = 1; // The next 'in-air' state
+    int32 drone_id = 1;
+    bool is_in_air = 2; // The next 'in-air' state
 }
 
 message PublishLandedStateRequest {
-    LandedState landed_state = 1; // The next 'landed' state
+    int32 drone_id = 1;
+    LandedState landed_state = 2; // The next 'landed' state
 }
 
 message PublishRawGpsRequest {
-    RawGps raw_gps = 1; // The next 'Raw GPS' state. Warning: this is an advanced feature, use `Position` updates to get the location of the drone!
-    GpsInfo gps_info = 2; // The next 'GPS info' state
+    int32 drone_id = 1;
+    RawGps raw_gps = 2; // The next 'Raw GPS' state. Warning: this is an advanced feature, use `Position` updates to get the location of the drone!
+    GpsInfo gps_info = 3; // The next 'GPS info' state
 }
 
 message PublishBatteryRequest {
-    Battery battery = 1; // The next 'battery' state
+    int32 drone_id = 1;
+    Battery battery = 2; // The next 'battery' state
 }
 
 message PublishRcStatusRequest {
-    RcStatus rc_status = 1; // The next RC status
+    int32 drone_id = 1;
+    RcStatus rc_status = 2; // The next RC status
 }
 
 message PublishStatusTextRequest {
-    StatusText status_text = 1; // The next 'status text'
+    int32 drone_id = 1;
+    StatusText status_text = 2; // The next 'status text'
 }
 
 message PublishOdometryRequest {
-    Odometry odometry = 1; // The next odometry status
+    int32 drone_id = 1;
+    Odometry odometry = 2; // The next odometry status
 }
 
 message PublishPositionVelocityNedRequest {
-    PositionVelocityNed position_velocity_ned = 1; // The next position and velocity status
+    int32 drone_id = 1;
+    PositionVelocityNed position_velocity_ned = 2; // The next position and velocity status
 }
 
 message PublishGroundTruthRequest {
-    GroundTruth ground_truth = 1; // Ground truth position information available in simulation
+    int32 drone_id = 1;
+    GroundTruth ground_truth = 2; // Ground truth position information available in simulation
 }
 
 message PublishImuRequest {
-    Imu imu = 1; // The next IMU status
+    int32 drone_id = 1;
+    Imu imu = 2; // The next IMU status
 }
 
 message PublishScaledImuRequest {
-    Imu imu = 1; // The next scaled IMU status
+    int32 drone_id = 1;
+    Imu imu = 2; // The next scaled IMU status
 }
 
 message PublishRawImuRequest {
-    Imu imu = 1; // The next raw IMU status
+    int32 drone_id = 1;
+    Imu imu = 2; // The next raw IMU status
 }
 
 message PublishUnixEpochTimeRequest {
-    uint64 time_us = 1; // The next 'unix epoch time' status
+    int32 drone_id = 1;
+    uint64 time_us = 2; // The next 'unix epoch time' status
 }
 
 message PublishPositionResponse {

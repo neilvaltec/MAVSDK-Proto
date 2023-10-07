@@ -76,80 +76,95 @@ service OffboardService {
     rpc SetAccelerationNed(SetAccelerationNedRequest) returns(SetAccelerationNedResponse) { option (mavsdk.options.async_type) = SYNC; }
 }
 
-message StartRequest {}
+message StartRequest {
+    int32 drone_id = 1;
+}
 message StartResponse {
     OffboardResult offboard_result = 1;
 }
 
-message StopRequest {}
+message StopRequest {
+    int32 drone_id = 1;
+}
 message StopResponse {
     OffboardResult offboard_result = 1;
 }
 
-message IsActiveRequest {}
+message IsActiveRequest {
+    int32 drone_id = 1;
+}
 message IsActiveResponse {
     bool is_active = 1; // True if offboard is active
 }
 
 message SetAttitudeRequest {
-    Attitude attitude = 1; // Attitude roll, pitch and yaw along with thrust
+    int32 drone_id = 1;
+    Attitude attitude = 2; // Attitude roll, pitch and yaw along with thrust
 }
 message SetAttitudeResponse {
     OffboardResult offboard_result = 1;
 };
 
 message SetActuatorControlRequest {
-    ActuatorControl actuator_control = 1; // Actuator control values
+    int32 drone_id = 1;
+    ActuatorControl actuator_control = 2; // Actuator control values
 }
 message SetActuatorControlResponse {
     OffboardResult offboard_result = 1;
 };
 
 message SetAttitudeRateRequest {
-    AttitudeRate attitude_rate = 1; // Attitude rate roll, pitch and yaw angular rate along with thrust
+    int32 drone_id = 1;
+    AttitudeRate attitude_rate = 2; // Attitude rate roll, pitch and yaw angular rate along with thrust
 }
 message SetAttitudeRateResponse {
     OffboardResult offboard_result = 1;
 }
 
 message SetPositionNedRequest {
-    PositionNedYaw position_ned_yaw = 1; // Position and yaw
+    int32 drone_id = 1;
+    PositionNedYaw position_ned_yaw = 2; // Position and yaw
 }
 message SetPositionNedResponse {
     OffboardResult offboard_result = 1;
 }
 
 message SetPositionGlobalRequest {
-    PositionGlobalYaw position_global_yaw = 1; // Position and yaw
+    int32 drone_id = 1;
+    PositionGlobalYaw position_global_yaw = 2; // Position and yaw
 }
 message SetPositionGlobalResponse {
     OffboardResult offboard_result = 1;
 }
 
 message SetVelocityBodyRequest {
-    VelocityBodyYawspeed velocity_body_yawspeed = 1; // Velocity and yaw angular rate
+    int32 drone_id = 1;
+    VelocityBodyYawspeed velocity_body_yawspeed = 2; // Velocity and yaw angular rate
 }
 message SetVelocityBodyResponse {
     OffboardResult offboard_result = 1;
 }
 
 message SetVelocityNedRequest {
-    VelocityNedYaw velocity_ned_yaw = 1; // Velocity and yaw
+    int32 drone_id = 1;
+    VelocityNedYaw velocity_ned_yaw = 2; // Velocity and yaw
 }
 message SetVelocityNedResponse {
     OffboardResult offboard_result = 1;
 }
 
 message SetPositionVelocityNedRequest {
-    PositionNedYaw position_ned_yaw = 1; // Position and yaw
-    VelocityNedYaw velocity_ned_yaw = 2; // Velocity and yaw
+    int32 drone_id = 1;
+    PositionNedYaw position_ned_yaw = 2; // Position and yaw
+    VelocityNedYaw velocity_ned_yaw = 3; // Velocity and yaw
 }
 message SetPositionVelocityNedResponse {
     OffboardResult offboard_result = 1;
 }
 
 message SetAccelerationNedRequest {
-    AccelerationNed acceleration_ned = 1; // Acceleration
+    int32 drone_id = 1;
+    AccelerationNed acceleration_ned = 2; // Acceleration
 }
 message SetAccelerationNedResponse {
     OffboardResult offboard_result = 1;

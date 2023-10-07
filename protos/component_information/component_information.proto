@@ -32,7 +32,9 @@ message FloatParam {
     float max_value = 9; // Maximum value
 }
 
-message AccessFloatParamsRequest {}
+message AccessFloatParamsRequest {
+    int32 drone_id = 1;
+}
 
 message AccessFloatParamsResponse {
     ComponentInformationResult component_information_result = 1;
@@ -45,7 +47,9 @@ message FloatParamUpdate {
     float value = 2; // New value of param
 }
 
-message SubscribeFloatParamRequest {}
+message SubscribeFloatParamRequest {
+    int32 drone_id = 1;
+}
 
 message FloatParamResponse {
     FloatParamUpdate param_update = 1; // A param update

@@ -55,41 +55,53 @@ message TargetLocation {
     float velocity_z_m_s = 6 [(mavsdk.options.default_value)="NaN"]; // Target velocity in Z axis, in meters per second
 }
 
-message GetConfigRequest {}
+message GetConfigRequest {
+    int32 drone_id = 1;
+}
 message GetConfigResponse {
     Config config = 1; // The current configuration
 }
 
 message SetConfigRequest {
-    Config config = 1; // The new configuration to be set
+    int32 drone_id = 1;
+    Config config = 2; // The new configuration to be set
 }
 message SetConfigResponse {
     FollowMeResult follow_me_result = 1;
 }
 
-message IsActiveRequest {}
+message IsActiveRequest {
+    int32 drone_id = 1;
+}
 message IsActiveResponse {
     bool is_active = 1; // Whether follow me is active or not
 }
 
 message SetTargetLocationRequest {
-    TargetLocation location = 1; // The new TargetLocation to follow
+    int32 drone_id = 1;
+    TargetLocation location = 2; // The new TargetLocation to follow
 }
 message SetTargetLocationResponse {
     FollowMeResult follow_me_result = 1;
 }
 
-message GetLastLocationRequest {}
+message GetLastLocationRequest {
+    int32 drone_id = 1;
+}
 message GetLastLocationResponse {
     TargetLocation location = 1; // The last target location that was set
 }
 
-message StartRequest {}
+message StartRequest {
+    int32 drone_id = 1;
+}
 message StartResponse {
     FollowMeResult follow_me_result = 1;
 }
 
-message StopRequest {}
+message StopRequest {
+    int32 drone_id = 1;
+}
 message StopResponse {
     FollowMeResult follow_me_result = 1;
 }

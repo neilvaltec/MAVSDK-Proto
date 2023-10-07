@@ -128,344 +128,437 @@ service TelemetryService {
     rpc GetGpsGlobalOrigin(GetGpsGlobalOriginRequest) returns(GetGpsGlobalOriginResponse) {}
 }
 
-message SubscribePositionRequest {}
+message SubscribePositionRequest {
+    int32 drone_id = 1;
+}
 message PositionResponse {
     Position position = 1; // The next position
 }
 
-message SubscribeHomeRequest {}
+message SubscribeHomeRequest {
+    int32 drone_id = 1;
+}
 message HomeResponse {
     Position home = 1; // The next home position
 }
 
-message SubscribeInAirRequest {}
+message SubscribeInAirRequest {
+    int32 drone_id = 1;
+}
 message InAirResponse {
     bool is_in_air = 1; // The next 'in-air' state
 }
 
-message SubscribeLandedStateRequest {}
+message SubscribeLandedStateRequest {
+    int32 drone_id = 1;
+}
 message LandedStateResponse {
     LandedState landed_state = 1; // The next 'landed' state
 }
 
-message SubscribeArmedRequest {}
+message SubscribeArmedRequest {
+    int32 drone_id = 1;
+}
 message ArmedResponse {
    bool is_armed = 1; // The next 'armed' state
 }
 
-message SubscribeVtolStateRequest {}
+message SubscribeVtolStateRequest {
+    int32 drone_id = 1;
+}
 message VtolStateResponse {
     VtolState vtol_state = 1; // The next 'vtol' state
 }
 
-message SubscribeAttitudeQuaternionRequest {}
+message SubscribeAttitudeQuaternionRequest {
+    int32 drone_id = 1;
+}
 message AttitudeQuaternionResponse {
     Quaternion attitude_quaternion = 1; // The next attitude (quaternion)
 }
 
-message SubscribeAttitudeEulerRequest {}
+message SubscribeAttitudeEulerRequest {
+    int32 drone_id = 1;
+}
 message AttitudeEulerResponse {
     EulerAngle attitude_euler = 1; // The next attitude (Euler)
 }
 
-message SubscribeAttitudeAngularVelocityBodyRequest {}
+message SubscribeAttitudeAngularVelocityBodyRequest {
+    int32 drone_id = 1;
+}
 message AttitudeAngularVelocityBodyResponse {
     AngularVelocityBody attitude_angular_velocity_body = 1; // The next angular velocity (rad/s)
 }
 
-message SubscribeCameraAttitudeQuaternionRequest {}
+message SubscribeCameraAttitudeQuaternionRequest {
+    int32 drone_id = 1;
+}
 message CameraAttitudeQuaternionResponse {
     Quaternion attitude_quaternion = 1; // The next camera attitude (quaternion)
 }
 
-message SubscribeCameraAttitudeEulerRequest {}
+message SubscribeCameraAttitudeEulerRequest {
+    int32 drone_id = 1;
+}
 message CameraAttitudeEulerResponse {
     EulerAngle attitude_euler = 1; // The next camera attitude (Euler)
 }
 
-message SubscribeVelocityNedRequest {}
+message SubscribeVelocityNedRequest {
+    int32 drone_id = 1;
+}
 message VelocityNedResponse {
     VelocityNed velocity_ned = 1; // The next velocity (NED)
 }
 
-message SubscribeGpsInfoRequest {}
+message SubscribeGpsInfoRequest {
+    int32 drone_id = 1;
+}
 message GpsInfoResponse {
     GpsInfo gps_info = 1; // The next 'GPS info' state
 }
 
-message SubscribeRawGpsRequest {}
+message SubscribeRawGpsRequest {
+    int32 drone_id = 1;
+}
 message RawGpsResponse {
     RawGps raw_gps = 1; // The next 'Raw GPS' state. Warning: this is an advanced feature, use `Position` updates to get the location of the drone!
 }
 
-message SubscribeBatteryRequest {}
+message SubscribeBatteryRequest {
+    int32 drone_id = 1;
+}
 message BatteryResponse {
     Battery battery = 1; // The next 'battery' state
 }
 
-message SubscribeFlightModeRequest {}
+message SubscribeFlightModeRequest {
+    int32 drone_id = 1;
+}
 message FlightModeResponse {
     FlightMode flight_mode = 1; // The next flight mode
 }
 
-message SubscribeHealthRequest {}
+message SubscribeHealthRequest {
+    int32 drone_id = 1;
+}
 message HealthResponse {
     Health health = 1; // The next 'health' state
 }
 
-message SubscribeRcStatusRequest {}
+message SubscribeRcStatusRequest {
+    int32 drone_id = 1;
+}
 message RcStatusResponse {
     RcStatus rc_status = 1; // The next RC status
 }
 
-message SubscribeStatusTextRequest {}
+message SubscribeStatusTextRequest {
+    int32 drone_id = 1;
+}
 message StatusTextResponse {
     StatusText status_text = 1; // The next 'status text'
 }
 
-message SubscribeActuatorControlTargetRequest {}
+message SubscribeActuatorControlTargetRequest {
+    int32 drone_id = 1;
+}
 message ActuatorControlTargetResponse {
     ActuatorControlTarget actuator_control_target = 1; // The next actuator control target
 }
 
-message SubscribeActuatorOutputStatusRequest {}
+message SubscribeActuatorOutputStatusRequest {
+    int32 drone_id = 1;
+}
 message ActuatorOutputStatusResponse {
     ActuatorOutputStatus actuator_output_status = 1; // The next actuator output status
 }
 
-message SubscribeOdometryRequest {}
+message SubscribeOdometryRequest {
+    int32 drone_id = 1;
+}
 message OdometryResponse {
     Odometry odometry = 1; // The next odometry status
 }
 
-message SubscribePositionVelocityNedRequest {}
+message SubscribePositionVelocityNedRequest {
+    int32 drone_id = 1;
+}
 message PositionVelocityNedResponse {
     PositionVelocityNed position_velocity_ned = 1; // The next position and velocity status
 }
 
-message SubscribeGroundTruthRequest {}
+message SubscribeGroundTruthRequest {
+    int32 drone_id = 1;
+}
 message GroundTruthResponse {
     GroundTruth ground_truth = 1; // Ground truth position information available in simulation
 }
 
-message SubscribeFixedwingMetricsRequest {}
+message SubscribeFixedwingMetricsRequest {
+    int32 drone_id = 1;
+}
 message FixedwingMetricsResponse {
     FixedwingMetrics fixedwing_metrics = 1; // The next fixedwing metrics
 }
 
-message SubscribeImuRequest {}
+message SubscribeImuRequest {
+    int32 drone_id = 1;
+}
 message ImuResponse {
     Imu imu = 1; // The next IMU status
 }
 
-message SubscribeScaledImuRequest {}
+message SubscribeScaledImuRequest {
+    int32 drone_id = 1;
+}
 message ScaledImuResponse {
     Imu imu = 1; // The next scaled IMU status
 }
 
-message SubscribeRawImuRequest {}
+message SubscribeRawImuRequest {
+    int32 drone_id = 1;
+}
 message RawImuResponse {
     Imu imu = 1; // The next raw IMU status
 }
 
-message SubscribeHealthAllOkRequest {}
+message SubscribeHealthAllOkRequest {
+    int32 drone_id = 1;
+}
 message HealthAllOkResponse {
     bool is_health_all_ok = 1; // The next 'health all ok' status
 }
 
-message SubscribeUnixEpochTimeRequest {}
+message SubscribeUnixEpochTimeRequest {
+    int32 drone_id = 1;
+}
 message UnixEpochTimeResponse {
     uint64 time_us = 1; // The next 'unix epoch time' status
 }
 
-message SubscribeDistanceSensorRequest {}
+message SubscribeDistanceSensorRequest {
+    int32 drone_id = 1;
+}
 message DistanceSensorResponse {
     DistanceSensor distance_sensor = 1; // The next Distance Sensor status
 }
 
-message SubscribeScaledPressureRequest {}
+message SubscribeScaledPressureRequest {
+    int32 drone_id = 1;
+}
 message ScaledPressureResponse {
     ScaledPressure scaled_pressure = 1; // The next Scaled Pressure status
 }
 
-message SubscribeHeadingRequest {}
+message SubscribeHeadingRequest {
+    int32 drone_id = 1;
+}
 message HeadingResponse {
     Heading heading_deg = 1; // The next heading (yaw) in degrees
 }
 
 message SetRatePositionRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRatePositionResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateHomeRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateHomeResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateInAirRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateInAirResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateLandedStateRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateLandedStateResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateVtolStateRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateVtolStateResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateAttitudeRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateAttitudeResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateAttitudeAngularVelocityBodyRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateAttitudeAngularVelocityBodyResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateCameraAttitudeQuaternionRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateCameraAttitudeQuaternionResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateCameraAttitudeRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateCameraAttitudeResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateVelocityNedRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateVelocityNedResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateGpsInfoRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateGpsInfoResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateRawGpsRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 
 message SetRateBatteryRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateBatteryResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateRcStatusRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateRcStatusResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateActuatorControlTargetRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateActuatorControlTargetResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateActuatorOutputStatusRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateActuatorOutputStatusResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateOdometryRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateOdometryResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRatePositionVelocityNedRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRatePositionVelocityNedResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateGroundTruthRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateGroundTruthResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateFixedwingMetricsRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateFixedwingMetricsResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateImuRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateImuResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateScaledImuRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateScaledImuResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateRawImuRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateRawImuResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateUnixEpochTimeRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateUnixEpochTimeResponse {
     TelemetryResult telemetry_result = 1;
 }
 
 message SetRateDistanceSensorRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateDistanceSensorResponse {
     TelemetryResult telemetry_result = 1;
 }
 
-message GetGpsGlobalOriginRequest {}
+message GetGpsGlobalOriginRequest {
+    int32 drone_id = 1;
+}
 message GetGpsGlobalOriginResponse {
     TelemetryResult telemetry_result = 1;
     GpsGlobalOrigin gps_global_origin = 2;

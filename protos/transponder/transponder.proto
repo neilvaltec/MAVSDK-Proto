@@ -17,13 +17,16 @@ service TransponderService {
     rpc SetRateTransponder(SetRateTransponderRequest) returns(SetRateTransponderResponse) {}
 }
 
-message SubscribeTransponderRequest {}
+message SubscribeTransponderRequest {
+    int32 drone_id = 1;
+}
 message TransponderResponse {
     AdsbVehicle transponder = 1; // The next detection
 }
 
 message SetRateTransponderRequest {
-    double rate_hz = 1; // The requested rate (in Hertz)
+    int32 drone_id = 1;
+    double rate_hz = 2; // The requested rate (in Hertz)
 }
 message SetRateTransponderResponse {
     TransponderResult transponder_result = 1;

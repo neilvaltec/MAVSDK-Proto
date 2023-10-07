@@ -80,62 +80,81 @@ service MissionRawService {
 }
 
 message UploadMissionRequest {
-    repeated MissionItem mission_items = 1; // The mission items
+    int32 drone_id = 1;
+    repeated MissionItem mission_items = 2; // The mission items
 }
 message UploadMissionResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
-message CancelMissionUploadRequest {}
+message CancelMissionUploadRequest {
+    int32 drone_id = 1;
+}
 message CancelMissionUploadResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
-message DownloadMissionRequest {}
+message DownloadMissionRequest {
+    int32 drone_id = 1;
+}
 message DownloadMissionResponse {
     MissionRawResult mission_raw_result = 1;
     repeated MissionItem mission_items = 2; // The mission items
 }
 
-message CancelMissionDownloadRequest {}
+message CancelMissionDownloadRequest {
+    int32 drone_id = 1;
+}
 message CancelMissionDownloadResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
-message StartMissionRequest {}
+message StartMissionRequest {
+    int32 drone_id = 1;
+}
 message StartMissionResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
-message PauseMissionRequest {}
+message PauseMissionRequest {
+    int32 drone_id = 1;
+}
 message PauseMissionResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
-message ClearMissionRequest {}
+message ClearMissionRequest {
+    int32 drone_id = 1;
+}
 message ClearMissionResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
 message SetCurrentMissionItemRequest {
-    int32 index = 1; // Index of the mission item to be set as the next one (0-based)
+    int32 drone_id = 1;
+    int32 index = 2; // Index of the mission item to be set as the next one (0-based)
 }
 message SetCurrentMissionItemResponse {
     MissionRawResult mission_raw_result = 1;
 }
 
-message SubscribeMissionProgressRequest {}
+message SubscribeMissionProgressRequest {
+    int32 drone_id = 1;
+}
 message MissionProgressResponse {
     MissionProgress mission_progress = 1; // Mission progress
 }
 
-message SubscribeMissionChangedRequest {}
+message SubscribeMissionChangedRequest {
+    int32 drone_id = 1;
+}
 message MissionChangedResponse {
     bool mission_changed = 1; // Mission has changed
 }
 
 message ImportQgroundcontrolMissionRequest {
-    string qgc_plan_path = 1; // File path of the QGC plan
+    int32 drone_id = 1;
+    string qgc_plan_path = 2; // File path of the QGC plan
 }
 message ImportQgroundcontrolMissionResponse {
     MissionRawResult mission_raw_result = 1;

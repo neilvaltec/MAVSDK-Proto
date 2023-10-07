@@ -34,7 +34,8 @@ message FloatParam {
 }
 
 message ProvideFloatParamRequest {
-    FloatParam param = 1; // Float param definition
+    int32 drone_id = 1;
+    FloatParam param = 2; // Float param definition
 }
 
 message ProvideFloatParamResponse {
@@ -47,7 +48,9 @@ message FloatParamUpdate {
     float value = 2; // New value of param
 }
 
-message SubscribeFloatParamRequest {}
+message SubscribeFloatParamRequest {
+    int32 drone_id = 1;
+}
 
 message FloatParamResponse {
     FloatParamUpdate param_update = 1; // A param update

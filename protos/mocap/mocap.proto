@@ -22,21 +22,24 @@ service MocapService {
 }
 
 message SetVisionPositionEstimateRequest {
-    VisionPositionEstimate vision_position_estimate = 1; // The vision position estimate
+    int32 drone_id = 1;
+    VisionPositionEstimate vision_position_estimate = 2; // The vision position estimate
 }
 message SetVisionPositionEstimateResponse {
     MocapResult mocap_result = 1;
 }
 
 message SetAttitudePositionMocapRequest {
-    AttitudePositionMocap attitude_position_mocap = 1; // The attitude and position data
+    int32 drone_id = 1;
+    AttitudePositionMocap attitude_position_mocap = 2; // The attitude and position data
 }
 message SetAttitudePositionMocapResponse {
     MocapResult mocap_result = 1;
 }
 
 message SetOdometryRequest {
-    Odometry odometry = 1; // The odometry data
+    int32 drone_id = 1;
+    Odometry odometry = 2; // The odometry data
 }
 message SetOdometryResponse {
     MocapResult mocap_result = 1;

@@ -72,50 +72,59 @@ service GimbalService {
 }
 
 message SetPitchAndYawRequest {
-    float pitch_deg = 1; // Pitch angle in degrees (negative points down)
-    float yaw_deg = 2; // Yaw angle in degrees (positive is clock-wise, range: -180 to 180 or 0 to 360)
+    int32 drone_id = 1;
+    float pitch_deg = 2; // Pitch angle in degrees (negative points down)
+    float yaw_deg = 3; // Yaw angle in degrees (positive is clock-wise, range: -180 to 180 or 0 to 360)
 }
 message SetPitchAndYawResponse {
     GimbalResult gimbal_result = 1;
 }
 
 message SetPitchRateAndYawRateRequest {
-    float pitch_rate_deg_s = 1; // Angular rate around pitch axis in degrees/second (negative downward)
-    float yaw_rate_deg_s = 2; // Angular rate around yaw axis in degrees/second (positive is clock-wise)
+    int32 drone_id = 1;
+    float pitch_rate_deg_s = 2; // Angular rate around pitch axis in degrees/second (negative downward)
+    float yaw_rate_deg_s = 3; // Angular rate around yaw axis in degrees/second (positive is clock-wise)
 }
 message SetPitchRateAndYawRateResponse {
     GimbalResult gimbal_result = 1;
 }
 
 message SetModeRequest {
-    GimbalMode gimbal_mode = 1; // The mode to be set.
+    int32 drone_id = 1;
+    GimbalMode gimbal_mode = 2; // The mode to be set.
 }
 message SetModeResponse {
     GimbalResult gimbal_result = 1;
 }
 
 message SetRoiLocationRequest {
-    double latitude_deg = 1; // Latitude in degrees
-    double longitude_deg = 2; // Longitude in degrees
-    float altitude_m = 3; // Altitude in metres (AMSL)
+    int32 drone_id = 1;
+    double latitude_deg = 2; // Latitude in degrees
+    double longitude_deg = 3; // Longitude in degrees
+    float altitude_m = 4; // Altitude in metres (AMSL)
 }
 message SetRoiLocationResponse {
     GimbalResult gimbal_result = 1;
 }
 
 message TakeControlRequest {
-    ControlMode control_mode = 1; // Control mode (primary or secondary)
+    int32 drone_id = 1;
+    ControlMode control_mode = 2; // Control mode (primary or secondary)
 }
 message TakeControlResponse {
     GimbalResult gimbal_result = 1;
 }
 
-message ReleaseControlRequest {}
+message ReleaseControlRequest {
+    int32 drone_id = 1;
+}
 message ReleaseControlResponse {
     GimbalResult gimbal_result = 1;
 }
 
-message SubscribeControlRequest {}
+message SubscribeControlRequest {
+    int32 drone_id = 1;
+}
 message ControlResponse {
     ControlStatus control_status = 1; // Control status
 }

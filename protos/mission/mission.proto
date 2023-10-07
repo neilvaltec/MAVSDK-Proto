@@ -105,83 +105,107 @@ service MissionService {
 }
 
 message UploadMissionRequest {
-    MissionPlan mission_plan = 1; // The mission plan
+    int32 drone_id = 1;
+    MissionPlan mission_plan = 2; // The mission plan
 }
 message UploadMissionResponse {
     MissionResult mission_result = 1;
 }
 
 message SubscribeUploadMissionWithProgressRequest {
-    MissionPlan mission_plan = 1; // The mission plan
+    int32 drone_id = 1;
+    MissionPlan mission_plan = 2; // The mission plan
 }
 message UploadMissionWithProgressResponse {
     MissionResult mission_result = 1;
     ProgressData progress_data = 2; // The progress data
 }
 
-message CancelMissionUploadRequest {}
+message CancelMissionUploadRequest {
+    int32 drone_id = 1;
+}
 message CancelMissionUploadResponse {
     MissionResult mission_result = 1;
 }
 
-message DownloadMissionRequest {}
+message DownloadMissionRequest {
+    int32 drone_id = 1;
+}
 message DownloadMissionResponse {
     MissionResult mission_result = 1;
     MissionPlan mission_plan = 2; // The mission plan
 }
 
-message SubscribeDownloadMissionWithProgressRequest {}
+message SubscribeDownloadMissionWithProgressRequest {
+    int32 drone_id = 1;
+}
 message DownloadMissionWithProgressResponse {
     MissionResult mission_result = 1;
     ProgressDataOrMission progress_data = 2; // The progress data, or the mission plan (when the download is finished)
 }
 
-message CancelMissionDownloadRequest {}
+message CancelMissionDownloadRequest {
+    int32 drone_id = 1;
+}
 message CancelMissionDownloadResponse {
     MissionResult mission_result = 1;
 }
 
-message StartMissionRequest {}
+message StartMissionRequest {
+    int32 drone_id = 1;
+}
 message StartMissionResponse {
     MissionResult mission_result = 1;
 }
 
-message PauseMissionRequest {}
+message PauseMissionRequest {
+    int32 drone_id = 1;
+}
 message PauseMissionResponse {
     MissionResult mission_result = 1;
 }
 
-message ClearMissionRequest {}
+message ClearMissionRequest {
+    int32 drone_id = 1;
+}
 message ClearMissionResponse {
     MissionResult mission_result = 1;
 }
 
 message SetCurrentMissionItemRequest {
-    int32 index = 1; // Index of the mission item to be set as the next one (0-based)
+    int32 drone_id = 1;
+    int32 index = 2; // Index of the mission item to be set as the next one (0-based)
 }
 message SetCurrentMissionItemResponse {
     MissionResult mission_result = 1;
 }
 
-message IsMissionFinishedRequest {}
+message IsMissionFinishedRequest {
+    int32 drone_id = 1;
+}
 message IsMissionFinishedResponse {
     MissionResult mission_result = 1;
     bool is_finished = 2; // True if the mission is finished and the last mission item has been reached
 }
 
-message SubscribeMissionProgressRequest {}
+message SubscribeMissionProgressRequest {
+    int32 drone_id = 1;
+}
 message MissionProgressResponse {
     MissionProgress mission_progress = 1; // Mission progress
 }
 
-message GetReturnToLaunchAfterMissionRequest {}
+message GetReturnToLaunchAfterMissionRequest {
+    int32 drone_id = 1;
+}
 message GetReturnToLaunchAfterMissionResponse {
     MissionResult mission_result = 1;
     bool enable = 2; // If true, trigger an RTL at the end of the mission
 }
 
 message SetReturnToLaunchAfterMissionRequest {
-    bool enable = 1; // If true, trigger an RTL at the end of the mission
+    int32 drone_id = 1;
+    bool enable = 2; // If true, trigger an RTL at the end of the mission
 }
 message SetReturnToLaunchAfterMissionResponse {
     MissionResult mission_result = 1;

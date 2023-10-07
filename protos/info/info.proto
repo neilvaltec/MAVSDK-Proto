@@ -21,31 +21,41 @@ service InfoService {
     rpc GetSpeedFactor(GetSpeedFactorRequest) returns(GetSpeedFactorResponse) { option (mavsdk.options.async_type) = SYNC; }
 }
 
-message GetFlightInformationRequest {}
+message GetFlightInformationRequest {
+    int32 drone_id = 1;
+}
 message GetFlightInformationResponse {
     InfoResult info_result = 1;
     FlightInfo flight_info = 2; // Flight information of the system
 }
 
-message GetIdentificationRequest {}
+message GetIdentificationRequest {
+    int32 drone_id = 1;
+}
 message GetIdentificationResponse {
     InfoResult info_result = 1;
     Identification identification = 2; // Identification of the system
 }
 
-message GetProductRequest {}
+message GetProductRequest {
+    int32 drone_id = 1;
+}
 message GetProductResponse {
     InfoResult info_result = 1;
     Product product = 2; // Product information of the system
 }
 
-message GetVersionRequest {}
+message GetVersionRequest {
+    int32 drone_id = 1;
+}
 message GetVersionResponse {
     InfoResult info_result = 1;
     Version version = 2; // Version information about the system
 }
 
-message GetSpeedFactorRequest {}
+message GetSpeedFactorRequest {
+    int32 drone_id = 1;
+}
 message GetSpeedFactorResponse {
     InfoResult info_result = 1;
     double speed_factor = 2; // Speed factor of simulation

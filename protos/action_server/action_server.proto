@@ -37,39 +37,59 @@ service ActionServerService {
 }
 
 message SetAllowTakeoffRequest {
-    bool allow_takeoff = 1; // Is takeoff allowed?
+    int32 drone_id = 1;
+    bool allow_takeoff = 2; // Is takeoff allowed?
 }
 
 message SetArmableRequest {
-    bool armable = 1; // Is Armable now?
-    bool force_armable = 2; // Is armable with force?
+    int32 drone_id = 1;
+    bool armable = 2; // Is Armable now?
+    bool force_armable = 3; // Is armable with force?
 }
 
 message SetDisarmableRequest {
-    bool disarmable = 1; // Is disarmable now?
-    bool force_disarmable = 2; // Is disarmable with force? (Kill)
+    int32 drone_id = 1;
+    bool disarmable = 2; // Is disarmable now?
+    bool force_disarmable = 3; // Is disarmable with force? (Kill)
 }
 
 message SetAllowableFlightModesRequest
 {
-    AllowableFlightModes flight_modes = 1;
+    int32 drone_id = 1;
+    AllowableFlightModes flight_modes = 2;
 }
 
-message GetAllowableFlightModesRequest {}
+message GetAllowableFlightModesRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeArmDisarmRequest {}
+message SubscribeArmDisarmRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeFlightModeChangeRequest {}
+message SubscribeFlightModeChangeRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeTakeoffRequest {}
+message SubscribeTakeoffRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeLandRequest {}
+message SubscribeLandRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeRebootRequest {}
+message SubscribeRebootRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeShutdownRequest {}
+message SubscribeShutdownRequest {
+    int32 drone_id = 1;
+}
 
-message SubscribeTerminateRequest {}
+message SubscribeTerminateRequest {
+    int32 drone_id = 1;
+}
 
 message ArmDisarmResponse {
     ActionServerResult action_server_result = 1;
