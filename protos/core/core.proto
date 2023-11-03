@@ -20,6 +20,10 @@ service CoreService {
      * need to be increased to prevent timeouts.
      */
     rpc SetMavlinkTimeout(SetMavlinkTimeoutRequest) returns(SetMavlinkTimeoutResponse) {}
+    /*
+     * Add new drone to the mavsdk.
+     */
+    rpc AddNewConnection(AddNewConnectionRequest) returns(AddNewConnectionResponse) {}
 }
 
 message SubscribeConnectionStateRequest {
@@ -38,4 +42,11 @@ message SetMavlinkTimeoutResponse {}
 // Connection state type.
 message ConnectionState {
     bool is_connected = 2; // Whether the vehicle got connected or disconnected
+}
+
+message AddNewConnectionRequest {
+    string connection_url = 1;
+}
+message AddNewConnectionResponse {
+    bool succeed = 1; // Connection state
 }
