@@ -46,6 +46,7 @@ message ConnectionState {
 
 message AddNewConnectionRequest {
     string connection_url = 1;
+    int32 current_total_drone_num = 2;
 }
 message AddNewConnectionResponse {
     bool succeed = 1; // Connection state
